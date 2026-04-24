@@ -8,27 +8,32 @@
 
 ## Project Overview
 
-This project implements a leaderboard system that collects quiz scores through a validator API, removes duplicate responses, calculates total scores for each participant, and generates the final leaderboard.
+The leaderboard system in this project collects quiz scores through the validator API, removes duplicate responses, calculates total scores for each participant, and generates the final leaderboard.
+
+The solution simulates a real-world backend workflow involving API polling, processing, and validation.
 
 ---
 
 ## Objective
 
-* Poll the validator API 10 times
-* Maintain a 5-second delay between each poll
-* Remove duplicate entries using `(roundId + participant)`
-* Aggregate scores per participant
-* Generate leaderboard sorted by total score
-* Submit leaderboard once using the submission API
+The main objectives of this assignment were:
+
+1. Poll the validator API 10 times
+2. Maintain a 5-second delay between each poll
+3. Remove duplicate score entries using `(roundId + participant)`
+4. Aggregate total scores per participant
+5. Generate a leaderboard sorted by total score
+6. Submit the leaderboard once using the submission API
 
 ---
 
 ## Approach
 
-* Used `HashSet` to remove duplicate events
-* Used `HashMap` to store participant scores
-* Sorted leaderboard in descending order
-* Submitted leaderboard using POST API
+1. The API was called 10 times using poll values from 0 to 9
+2. A `HashSet` was used to remove duplicate entries
+3. A `HashMap` was used to store and update participant scores
+4. The leaderboard was sorted from highest to lowest total score
+5. The final leaderboard was submitted using the POST API
 
 ---
 
@@ -46,18 +51,26 @@ This project implements a leaderboard system that collects quiz scores through a
 
 Compile:
 
-```bash
+```
 javac -cp ".;json-20210307.jar" QuizLeaderboard.java
 ```
 
 Run:
 
-```bash
+```
 java -cp ".;json-20210307.jar" QuizLeaderboard
 ```
+
+Execution time is approximately 50 seconds due to the required delay between API calls.
+
+---
+
+## Result
+
+After processing all responses correctly, the leaderboard was generated and successfully submitted through the validator API.
 
 ---
 
 ## Output Screenshot
-![alt text](image.png)
 
+![Program Output](images/output.png)
